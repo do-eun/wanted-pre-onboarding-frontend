@@ -1,4 +1,3 @@
-import Title from "../components/elements/Title";
 import Layout from "../components/layout/Layout";
 import TodoEdit from "../components/todo/TodoEdit";
 import TodoInput from "../components/todo/TodoInput";

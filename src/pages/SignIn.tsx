@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Title from "../components/elements/Title";
 import Layout from "../components/layout/Layout";
 
 const SignIn = () => {
+  const nav = useNavigate();
   return (
     <Layout>
       <Title text="로그인" />
@@ -30,6 +32,12 @@ const SignIn = () => {
       <p className="textVaild mt-[1rem]">
         이메일에 @를 포함해주세요. 비밀번호는 8자 시앙
       </p>
+      <button
+        className="m-2 w-[8rem] bg-zinc-300 p-1"
+        onClick={() => nav("/signUp")}
+      >
+        회원가입 하기
+      </button>
     </Layout>
   );
 };
