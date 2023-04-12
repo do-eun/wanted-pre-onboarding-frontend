@@ -1,7 +1,7 @@
 import Layout from "../components/layout/Layout";
-import TodoEdit from "../components/todo/TodoEdit";
 import TodoInput from "../components/todo/TodoInput";
 import Todos from "../components/todo/Todos";
+
 import { useTokenCheck } from "../hooks/useTokenCheck";
 
 const Todo = () => {
@@ -23,7 +23,11 @@ const Todo = () => {
       <div className="h-[20rem] w-[80%] overflow-auto">
         <Todos />
         <Todos />
-        <TodoEdit />
+        <Todos />
+        <Todos />
+        <Todos />
+        <Todos />
+        <Todos />
       </div>
     </Layout>
   );

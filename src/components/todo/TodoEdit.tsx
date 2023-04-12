@@ -1,8 +1,10 @@
-const TodoEdit = () => {
+import { ITodoEdit } from "../../types/todoType";
+
+const TodoEdit = ({ setIsEdit }: ITodoEdit) => {
   return (
-    <li className="flex items-center">
+    <li className="my-2 flex items-center">
       <label>
-        <input className="p-1" data-testid="modify-input" />
+        <input data-testid="modify-input" />
       </label>
       <button
         className="ml-2 h-[1.5rem] w-[2rem] rounded-md bg-zinc-300 text-[0.8rem]"
@@ -11,6 +13,7 @@ const TodoEdit = () => {
         제출
       </button>
       <button
+        onClick={() => setIsEdit(false)}
         className="ml-2 h-[1.5rem] w-[2rem] rounded-md bg-zinc-300 text-[0.8rem]"
         data-testid="cancel-button"
       >

@@ -1,23 +1,18 @@
+import { useState } from "react";
+import TodoEdit from "./TodoEdit";
+import TodoItem from "./TodoItem";
+
 const Todos = () => {
+  const [isEdit, setIsEdit] = useState(false);
+
   return (
-    <li className="my-2 flex items-center">
-      <label className="inline-flex h-[2rem] items-center">
-        <input className="mx-1 h-[1.2rem] w-[1.2rem]" type="checkbox" />
-        <span>TODO dsdsadad1</span>
-      </label>
-      <button
-        className="ml-2 h-[1.5rem] w-[2rem] rounded-md bg-slate-300 text-[0.8rem]"
-        data-testid="modify-button"
-      >
-        수정
-      </button>
-      <button
-        className="ml-2 h-[1.5rem] w-[2rem] rounded-md bg-slate-300 text-[0.8rem]"
-        data-testid="delete-button"
-      >
-        삭제
-      </button>
-    </li>
+    <>
+      {isEdit ? (
+        <TodoEdit setIsEdit={setIsEdit} />
+      ) : (
+        <TodoItem setIsEdit={setIsEdit} />
+      )}
+    </>
   );
 };
 
