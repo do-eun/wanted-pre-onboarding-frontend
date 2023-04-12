@@ -1,6 +1,6 @@
 import { ISign } from "../types/userType";
 import axios, { AxiosError } from "axios";
-import { setAccessToken } from "../util/isToken";
+import { setAccessToken } from "../util/token";
 
 export const signInstance = axios.create({
   baseURL: "https://www.pre-onboarding-selection-task.shop",

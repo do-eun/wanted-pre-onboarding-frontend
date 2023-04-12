@@ -2,8 +2,14 @@ import Layout from "../components/layout/Layout";
 import TodoEdit from "../components/todo/TodoEdit";
 import TodoInput from "../components/todo/TodoInput";
 import Todos from "../components/todo/Todos";
+import { useTokenCheck } from "../hooks/useTokenCheck";
 
 const Todo = () => {
+  const isLogin = useTokenCheck();
+  if (!isLogin) {
+    return null;
+  }
+
   return (
     <Layout>
       <div className="mt-[1rem]">
