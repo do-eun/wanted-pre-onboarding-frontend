@@ -16,10 +16,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #eee;
 }
 
-.textVaild {
-  font-size: 0.8rem;
-  color: rgb(180, 20, 20);
+body {
+  background-color: #eee;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
