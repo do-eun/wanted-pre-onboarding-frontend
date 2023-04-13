@@ -1,20 +1,13 @@
 import { useState } from "react";
 
-export const useInput = (
-  initailValue: any,
-  handleVaild: (inputValue: string) => void
-) => {
+type TInputHook = [string, (e: React.ChangeEvent<HTMLInputElement>) => void];
+
+export const useInput = (initailValue: string): TInputHook => {
   const [inputValue, setInputValue] = useState(initailValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleAction = () => {
-    setInputValue("");
-    handleVaild(inputValue);
-    return true;
-  };
-
-  return [inputValue, handleChange, handleAction];
+  return [inputValue, handleChange];
 };

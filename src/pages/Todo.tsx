@@ -1,14 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import TodoInput from "../components/todo/TodoInput";
-import Todos from "../components/todo/Todos";
-
+import TodoList from "../components/todo/TodoList";
 import { useTokenCheck } from "../hooks/useTokenCheck";
 import { deleteAccessToken } from "../util/token";
+import { GetTodo } from "../apis/todoApi";
+import { useEffect, useState } from "react";
+import { ITodosData } from "../types/todoType";
 
 const Todo = () => {
   const nav = useNavigate();
+  const [todoList, setTodoList] = useState<ITodosData[]>([]);
   const isLogin = useTokenCheck();
+
+  useEffect(() => {
+    GetTodo().then((res) => setTodoList(res));
+  }, []);
+
   if (!isLogin) {
     return null;
   }
@@ -39,13 +47,9 @@ const Todo = () => {
       </div>
       <TodoInput />
       <div className="h-[20rem] w-[80%] overflow-auto">
-        <Todos />
-        <Todos />
-        <Todos />
-        <Todos />
-        <Todos />
-        <Todos />
-        <Todos />
+        {todoList.map((todo) => (
+          <TodoList todo={todo} key={todo.id} />
+        ))}
       </div>
     </Layout>
   );
