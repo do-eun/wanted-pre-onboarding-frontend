@@ -1,5 +1,6 @@
 ## 프로젝트의 실행 방법
 
+터미널에 git clone https://github.com/do-eun/wanted-pre-onboarding-frontend.git  </br>
 npm install </br>
 npm start
 
