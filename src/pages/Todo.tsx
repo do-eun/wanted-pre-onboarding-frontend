@@ -45,10 +45,10 @@ const Todo = () => {
           className="mb-[1rem] h-[6rem] w-[6rem]"
         />
       </div>
-      <TodoInput />
+      <TodoInput setTodoList={setTodoList} />
       <div className="h-[20rem] w-[80%] overflow-auto">
         {todoList.map((todo) => (
-          <TodoList todo={todo} key={todo.id} />
+          <TodoList todo={todo} setTodoList={setTodoList} key={todo.id} />
         ))}
       </div>
     </Layout>

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { DeleteTodo, EditTodo } from "../../apis/todoApi";
+import { DeleteTodo, EditTodo, GetTodo } from "../../apis/todoApi";
 import { ITodoItemProps } from "../../types/todoType";
 
-const TodoItem = ({ setIsEdit, todo, edit }: ITodoItemProps) => {
+const TodoItem = ({ setIsEdit, todo, edit, setTodoList }: ITodoItemProps) => {
   const [isChecked, setIsChecked] = useState(todo?.isCompleted);
 
   const updateCheck = () => {
@@ -11,6 +11,10 @@ const TodoItem = ({ setIsEdit, todo, edit }: ITodoItemProps) => {
       todo: todo.todo,
       isCompleted: !isChecked,
     });
+  };
+
+  const deleteTodo = () => {
+    DeleteTodo(todo.id).then(() => GetTodo().then((res) => setTodoList(res)));
   };
 
   return (
@@ -35,9 +39,7 @@ const TodoItem = ({ setIsEdit, todo, edit }: ITodoItemProps) => {
         수정
       </button>
       <button
-        onClick={() => {
-          DeleteTodo(todo.id);
-        }}
+        onClick={() => deleteTodo()}
         className="ml-2 h-[1.5rem] w-[2rem] rounded-md bg-slate-300 text-[0.8rem]"
         data-testid="delete-button"
       >

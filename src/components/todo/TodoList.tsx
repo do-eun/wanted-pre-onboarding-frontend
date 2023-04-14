@@ -1,10 +1,10 @@
 import { useState } from "react";
 import TodoEdit from "./TodoEdit";
 import TodoItem from "./TodoItem";
-import { ITodosData } from "../../types/todoType";
+import { ITodoProps } from "../../types/todoType";
 import { useInput } from "../../hooks/useInput";
 
-const TodoList = ({ todo }: { todo: ITodosData }) => {
+const TodoList = ({ todo, setTodoList }: ITodoProps) => {
   const [isEdit, setIsEdit] = useState(false);
   const [edit, handleEdit] = useInput(todo.todo);
 
@@ -18,7 +18,12 @@ const TodoList = ({ todo }: { todo: ITodosData }) => {
           handleEdit={handleEdit}
         />
       ) : (
-        <TodoItem setIsEdit={setIsEdit} todo={todo} edit={edit} />
+        <TodoItem
+          setIsEdit={setIsEdit}
+          todo={todo}
+          edit={edit}
+          setTodoList={setTodoList}
+        />
       )}
     </>
   );

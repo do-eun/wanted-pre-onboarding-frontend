@@ -1,8 +1,14 @@
-import { PostTodo } from "../../apis/todoApi";
+import { useEffect } from "react";
+import { GetTodo, PostTodo } from "../../apis/todoApi";
 import { useInput } from "../../hooks/useInput";
+import { ITodoInput } from "../../types/todoType";
 
-const TodoInput = () => {
+const TodoInput = ({ setTodoList }: ITodoInput) => {
   const [todo, handlePost] = useInput("");
+
+  const addTodo = () => {
+    PostTodo(todo).then(() => GetTodo().then((res) => setTodoList(res)));
+  };
 
   return (
     <div className="mb-[1rem]">
@@ -14,7 +20,7 @@ const TodoInput = () => {
         data-testid="new-todo-input"
       />
       <button
-        onClick={() => PostTodo(todo)}
+        onClick={() => addTodo()}
         className="ml-[1rem] h-[2rem] w-[4rem] rounded-md bg-slate-400 text-gray-100 hover:bg-slate-500"
         data-testid="new-todo-add-button"
       >
