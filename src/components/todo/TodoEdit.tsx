@@ -2,9 +2,7 @@ import { EditTodo } from "../../apis/todoApi";
 import { useInput } from "../../hooks/useInput";
 import { ITodoItemProps } from "../../types/todoType";
 
-const TodoEdit = ({ setIsEdit, todo }: ITodoItemProps) => {
-  const [edit, handleEdit] = useInput(todo.todo);
-
+const TodoEdit = ({ setIsEdit, todo, edit, handleEdit }: ITodoItemProps) => {
   const updateTodo = () => {
     EditTodo({
       id: todo.id,

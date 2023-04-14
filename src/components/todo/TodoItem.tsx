@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DeleteTodo, EditTodo } from "../../apis/todoApi";
 import { ITodoItemProps } from "../../types/todoType";
 
-const TodoItem = ({ setIsEdit, todo }: ITodoItemProps) => {
+const TodoItem = ({ setIsEdit, todo, edit }: ITodoItemProps) => {
   const [isChecked, setIsChecked] = useState(todo?.isCompleted);
 
   const updateCheck = () => {
@@ -19,11 +19,11 @@ const TodoItem = ({ setIsEdit, todo }: ITodoItemProps) => {
         <input
           className="mx-1 h-[1.2rem] w-[1.2rem]"
           type="checkbox"
-          checked={todo.isCompleted}
+          checked={isChecked}
           onChange={(e) => setIsChecked(e.target.checked)}
           onClick={() => updateCheck()}
         />
-        <span>{todo?.todo}</span>
+        <span>{edit}</span>
       </label>
       <button
         onClick={() => {
