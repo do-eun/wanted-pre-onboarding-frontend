@@ -77,7 +77,7 @@ const Sign = ({ nowPage }: INowPage) => {
               onClick={() => nav("/signup")}
               className="mt-2 h-[2rem] w-[15rem] bg-slate-200"
             >
-              회원가입
+              회원가입 이동
             </button>
           </>
         ) : (

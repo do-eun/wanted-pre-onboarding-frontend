@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { GetTodo, PostTodo } from "../../apis/todoApi";
 import { useInput } from "../../hooks/useInput";
 import { ITodoInput } from "../../types/todoType";
