@@ -1,11 +1,33 @@
-import { ITodoEdit } from "../../types/todoType";
+import { useState } from "react";
+import { DeleteTodo, EditTodo, GetTodo } from "../../apis/todoApi";
+import { ITodoItemProps } from "../../types/todoType";
 
-const TodoItem = ({ setIsEdit }: ITodoEdit) => {
+const TodoItem = ({ setIsEdit, todo, edit, setTodoList }: ITodoItemProps) => {
+  const [isChecked, setIsChecked] = useState(todo?.isCompleted);
+
+  const updateCheck = () => {
+    EditTodo({
+      id: todo.id,
+      todo: todo.todo,
+      isCompleted: !isChecked,
+    });
+  };
+
+  const deleteTodo = () => {
+    DeleteTodo(todo.id).then(() => GetTodo().then((res) => setTodoList(res)));
+  };
+
   return (
     <li className="my-2 flex items-center">
       <label className="inline-flex h-[2rem] items-center">
-        <input className="mx-1 h-[1.2rem] w-[1.2rem]" type="checkbox" />
-        <span>TODO dsdsadad1</span>
+        <input
+          className="mx-1 h-[1.2rem] w-[1.2rem]"
+          type="checkbox"
+          checked={isChecked}
+          onChange={(e) => setIsChecked(e.target.checked)}
+          onClick={() => updateCheck()}
+        />
+        <span>{edit}</span>
       </label>
       <button
         onClick={() => {
@@ -17,6 +39,7 @@ const TodoItem = ({ setIsEdit }: ITodoEdit) => {
         수정
       </button>
       <button
+        onClick={() => deleteTodo()}
         className="ml-2 h-[1.5rem] w-[2rem] rounded-md bg-slate-300 text-[0.8rem]"
         data-testid="delete-button"
       >
