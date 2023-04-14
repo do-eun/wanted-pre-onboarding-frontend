@@ -2,10 +2,12 @@ import axios, { AxiosError } from "axios";
 import { getAccessToken } from "../util/token";
 import { ITodoPut } from "../types/todoType";
 
+const token = getAccessToken();
+
 export const instance = axios.create({
   baseURL: "https://www.pre-onboarding-selection-task.shop",
   headers: {
-    Authorization: `Bearer ${getAccessToken()}`,
+    Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
   },
 });
