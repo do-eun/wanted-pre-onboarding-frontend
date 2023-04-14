@@ -5,8 +5,7 @@ export const setAccessToken = (accessToken: string) => {
 
 /**토큰조회 */
 export const getAccessToken = () => {
-  const token = localStorage.getItem("accessToken");
-  return token;
+  return localStorage.getItem("accessToken");
 };
 
 /**토큰삭제 */
